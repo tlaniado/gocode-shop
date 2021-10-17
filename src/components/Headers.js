@@ -11,7 +11,7 @@ function Headers({ categories, setFilter }) {
             }}
           >
             {categories.map((category) => (
-              <option key={category.uniqueId}>{category}</option>
+              <option key={category}>{category}</option>
             ))}
           </select>
         </div>
