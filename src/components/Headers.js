@@ -10,6 +10,8 @@ function Headers({ categories, setFilter }) {
               setFilter(e.target.value);
             }}
           >
+            <option>All</option>
+
             {categories.map((category) => (
               <option key={category}>{category}</option>
             ))}

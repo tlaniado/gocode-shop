@@ -6,6 +6,7 @@ function Products(prop) {
       {prop.productList.map((item) => (
         <Product
           key={item.id}
+          id={item.id}
           imgSrc={item.image}
           price={item.price}
           title={item.title}

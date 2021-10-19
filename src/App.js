@@ -5,8 +5,11 @@ import "./App.css";
 import Products from "./components/Products/Products";
 import Headers from "./components/Headers";
 import Toggle from "./components/Toggle";
+import Cart from "./components/Cart/Cart";
+import CartProductsContexts from "./CartProductsContext";
 //import { logDOM } from "@testing-library/dom";
 function App() {
+  const [cartProduct, setCartProduct] = useState([]);
   const [myProductList, setMyProductList] = useState([]);
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
@@ -25,16 +28,21 @@ function App() {
     .filter((value, index, array) => array.indexOf(value) === index);
   const setFilter = (category) => {
     // console.log(category);
-    setFilterList(myProductList.filter((item) => item.category === category));
+    setFilterList(
+      myProductList.filter((item) =>
+        category !== "All" ? item.category === category : true
+      )
+    );
   };
 
   return (
-    <>
+    <CartProductsContexts.Provider value={[cartProduct, setCartProduct]}>
       <Headers categories={categories} setFilter={setFilter} />
+      <Cart></Cart>
       <Toggle />
 
       <Products productList={filterList} />
-    </>
+    </CartProductsContexts.Provider>
   );
 }
 

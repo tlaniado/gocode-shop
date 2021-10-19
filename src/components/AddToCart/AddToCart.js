@@ -1,14 +1,9 @@
-import "./Product.css";
+import React, { useContext } from "react";
 import CartProductsContexts from "../../CartProductsContext";
 
-import React, { useContext } from "react";
-import AddToCart from "../AddToCart/AddToCart";
-//import AddToCart from "../AddToCart/AddToCart";
-//let quantity = 1;
-
-function Product({ imgSrc, name, price, id }) {
+function AddToCart({ imgSrc, name, price, id }) {
   const [cartProduct, setCartProduct] = useContext(CartProductsContexts);
-
+  //   console.log({ imgSrc, name, price, id });
   function incrementCount() {
     let exist = false;
     cartProduct.map((item) => (item.id === id ? (exist = true) : {}));
@@ -56,7 +51,7 @@ function Product({ imgSrc, name, price, id }) {
             item.id === id
               ? {
                   ...item,
-                  price: item.price - price,
+                  price: item.price - item.price / item.quantity,
                   quantity: item.quantity - 1,
                 }
               : item
@@ -69,24 +64,10 @@ function Product({ imgSrc, name, price, id }) {
   }
 
   return (
-    <div className="product-card">
-      <div className="product-image">
-        <img src={imgSrc} alt="hello" />
-      </div>
-      <div className="product-info">
-        <h5>{name}</h5>
-        <h6>{price} $</h6>
-        <AddToCart
-          imgSrc={imgSrc}
-          name={name}
-          price={price}
-          id={id}
-        ></AddToCart>
-      </div>
+    <div>
+      <button onClick={incrementCount}>+</button>
+      <button onClick={decrementCount}>-</button>
     </div>
   );
 }
-
-export default Product;
-//    { imgSrc, name, price, id }          <button onClick={incrementCount}>+</button>
-//     <button onClick={decrementCount}>-</button>  <AddToCart key={id} id={id} imgSrc={imgSrc} price={price}></AddToCart>
+export default AddToCart;
