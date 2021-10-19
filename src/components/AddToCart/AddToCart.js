@@ -3,13 +3,10 @@ import CartProductsContexts from "../../CartProductsContext";
 
 function AddToCart({ imgSrc, name, price, id }) {
   const [cartProduct, setCartProduct] = useContext(CartProductsContexts);
-  //   console.log({ imgSrc, name, price, id });
   function incrementCount() {
     let exist = false;
     cartProduct.map((item) => (item.id === id ? (exist = true) : {}));
-    // console.log(cartProduct.some((item) => item.id !== id));
     if (!exist) {
-      //console.log("not exited");
       setCartProduct([
         {
           image: imgSrc,
@@ -21,8 +18,6 @@ function AddToCart({ imgSrc, name, price, id }) {
         ...cartProduct,
       ]);
     } else {
-      console.log(cartProduct);
-
       setCartProduct(
         cartProduct.map((item) =>
           item.id === id
@@ -37,7 +32,6 @@ function AddToCart({ imgSrc, name, price, id }) {
     }
   }
   function decrementCount() {
-    //cartProduct.some((item) => item.id === id && item.quantity === 1)
     let exist = false;
     cartProduct.map((item) =>
       item.id === id && item.quantity === 1 ? (exist = true) : {}
