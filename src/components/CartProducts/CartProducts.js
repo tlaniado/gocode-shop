@@ -1,20 +1,18 @@
 import { useContext } from "react";
 
 import CartProductsContexts from "../../CartProductsContext";
-import CartProduct from "../CartProduct/CartProduct";
+import Product from "../Product/Product";
 function CartProducts() {
   const [cartProduct, setCartProduct] = useContext(CartProductsContexts);
   return (
-    <section>
+    <section className="products">
       {cartProduct.map((item) => (
-        <CartProduct
+        <Product
           key={item.id}
           id={item.id}
-          imgSrc={item.imgSrc}
-          name={item.name}
+          imgSrc={item.image}
           price={item.price}
-          quantity={item.quantity}
-        ></CartProduct>
+        />
       ))}
     </section>
   );

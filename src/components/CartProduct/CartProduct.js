@@ -1,10 +1,14 @@
+import "./CartProduct.css";
 import React from "react";
 import AddToCart from "../AddToCart/AddToCart";
 
 function CartProduct({ id, imgSrc, name, price, quantity }) {
   return (
     <div className="App">
-      <img src={imgSrc} alt="hello" />
+      <div className="cart-image">
+        <img src={imgSrc} alt="hello" />
+      </div>
+
       <h5>{name}</h5>
       <h6>{price} $</h6>
       <h6>quantity: {quantity}</h6>

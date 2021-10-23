@@ -38,8 +38,9 @@ function App() {
   return (
     <CartProductsContexts.Provider value={[cartProduct, setCartProduct]}>
       <Headers categories={categories} setFilter={setFilter} />
-      <Cart></Cart>
       <Toggle />
+
+      <Cart />
 
       <Products productList={filterList} />
     </CartProductsContexts.Provider>
