@@ -2,16 +2,18 @@ import "./Product.css";
 
 import React from "react";
 import AddToCart from "../AddToCart/AddToCart";
+import { Link } from "react-router-dom";
 //import AddToCart from "../AddToCart/AddToCart";
 //let quantity = 1;
 
-function Product({ imgSrc, name, price, id }) {
+function Product({ imgSrc, name, price, id, title }) {
   return (
     <div className="product-card">
       <div className="product-image">
         <img src={imgSrc} alt="hello" />
       </div>
       <div className="product-info">
+        <Link to={`/products/${id}`}>{title}</Link>
         <h5>{name}</h5>
         <h6>{price} $</h6>
         <AddToCart
