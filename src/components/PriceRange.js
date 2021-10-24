@@ -7,8 +7,10 @@ import FilteredProductsContext from "../FilteredProductsContext";
 //   return `${value}°C`;
 // }
 
-function PriceRange({ products }) {
-  const [filterList, setFilterList] = React.useContext(FilteredProductsContext);
+function PriceRange({ products, filterList }) {
+  const [filterByPriceList, setFilterByPriceList] = React.useContext(
+    FilteredProductsContext
+  );
   let max = 0;
   let min = 1000;
   products.map((item) =>
@@ -23,16 +25,18 @@ function PriceRange({ products }) {
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
-    setFilterList(
-      products.filter((item) => item.price > value[0] && item.price < value[1])
+    setFilterByPriceList(
+      filterList.filter(
+        (item) => item.price > newValue[0] && item.price < newValue[1]
+      )
     );
   };
 
   return (
     <Box sx={{ width: 300 }}>
       <Slider
-        max={1000}
-        min={7}
+        max={max}
+        min={min}
         //getAriaLabel={() => "Temperature range"}
         value={value}
         onChange={handleChange}

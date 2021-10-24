@@ -1,6 +1,6 @@
 import PriceRange from "./PriceRange";
 
-function Headers({ categories, setFilter, products }) {
+function Headers({ categories, setFilter, products, filterList }) {
   return (
     <nav className="product-filter">
       <h1>Jackets</h1>
@@ -34,7 +34,7 @@ function Headers({ categories, setFilter, products }) {
           </select>
         </div>
       </div>
-      <PriceRange products={products} />
+      <PriceRange products={products} filterList={filterList} />
     </nav>
   );
 }
