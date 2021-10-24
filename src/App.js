@@ -7,6 +7,7 @@ import Headers from "./components/Headers";
 import Toggle from "./components/Toggle";
 import Cart from "./components/Cart/Cart";
 import CartProductsContexts from "./CartProductsContext";
+import FilteredProductsContext from "./FilteredProductsContext";
 //import { logDOM } from "@testing-library/dom";
 function App() {
   const [cartProduct, setCartProduct] = useState([]);
@@ -36,14 +37,20 @@ function App() {
   };
 
   return (
-    <CartProductsContexts.Provider value={[cartProduct, setCartProduct]}>
-      <Headers categories={categories} setFilter={setFilter} />
-      <Toggle />
+    <FilteredProductsContext.Provider value={[filterList, setFilterList]}>
+      <CartProductsContexts.Provider value={[cartProduct, setCartProduct]}>
+        <Headers
+          categories={categories}
+          setFilter={setFilter}
+          products={myProductList}
+        />
+        <Toggle />
 
-      <Cart />
+        <Cart />
 
-      <Products productList={filterList} />
-    </CartProductsContexts.Provider>
+        <Products productList={filterList} />
+      </CartProductsContexts.Provider>
+    </FilteredProductsContext.Provider>
   );
 }
 

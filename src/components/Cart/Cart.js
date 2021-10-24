@@ -20,16 +20,17 @@ function Cart() {
       return;
     }
 
-    setState({ ...state, [anchor]: open });
+    setState({ [anchor]: open });
   };
 
   const list = (anchor) => (
     <Box
       sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 250 }}
-      role="presentation"
+      //role="presentation"
       // onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
+      <h1>cart</h1>
       <Divider />
       <List>
         <CartProducts></CartProducts>
