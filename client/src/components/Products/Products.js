@@ -5,8 +5,8 @@ function Products(prop) {
     <section className="products">
       {prop.productList.map((item) => (
         <Product
-          key={item.id}
-          id={item.id}
+          key={item._id}
+          id={item._id}
           imgSrc={item.image}
           price={item.price}
           title={item.title}

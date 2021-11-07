@@ -19,7 +19,7 @@ function Home() {
   const [filterList, setFilterList] = useState([]);
 
   useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
+    fetch("/api/products")
       .then((lst) => {
         return lst.json();
       })
