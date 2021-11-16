@@ -58,7 +58,6 @@ function Home() {
           filterList={filterList}
           //prodoctFiltered={filterCoopied}
         />
-        <Toggle />
 
         <Cart />
 

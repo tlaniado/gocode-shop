@@ -3,27 +3,48 @@ import "./Product.css";
 import React from "react";
 import AddToCart from "../AddToCart/AddToCart";
 import { Link } from "react-router-dom";
+//import * as React from 'react';
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
+import { Button, CardActionArea, CardActions } from "@mui/material";
+
 //import AddToCart from "../AddToCart/AddToCart";
 //let quantity = 1;
 
-function Product({ imgSrc, name, price, id, title }) {
+function Product({ imgSrc, price, id, title, category }) {
   return (
-    <div className="product-card">
-      <div className="product-image">
-        <img src={imgSrc} alt="hello" />
-      </div>
-      <div className="product-info">
-        <Link to={`/products/${id}`}>{title}</Link>
-        <h5>{name}</h5>
-        <h6>{price} $</h6>
+    <Card className="product-card" sx={{ maxWidth: 250 }}>
+      <CardActionArea>
+        <CardMedia component="img" height="200" image={imgSrc} alt={title} />
+        <CardContent className="product-info">
+          <Typography gutterBottom variant="h5" component="div">
+            {title}
+          </Typography>
+          <Typography gutterBottom variant="h6" component="div">
+            {price} $
+          </Typography>
+
+          <Typography variant="body2" color="text.secondary">
+            {category}
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+      <CardActions className="product-info">
+        <Link to={`/products/${id}`}>
+          <Button size="small" color="primary">
+            More
+          </Button>
+        </Link>
         <AddToCart
           imgSrc={imgSrc}
-          name={name}
+          name={title}
           price={price}
           id={id}
         ></AddToCart>
-      </div>
-    </div>
+      </CardActions>
+    </Card>
   );
 }
 

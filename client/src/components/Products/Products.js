@@ -10,6 +10,7 @@ function Products(prop) {
           imgSrc={item.image}
           price={item.price}
           title={item.title}
+          category={item.category}
         />
       ))}
     </section>
